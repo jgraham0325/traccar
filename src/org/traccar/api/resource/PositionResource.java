@@ -15,6 +15,10 @@
  */
 package org.traccar.api.resource;
 
+import org.opengis.geometry.MismatchedDimensionException;
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.NoSuchAuthorityCodeException;
+import org.opengis.referencing.operation.TransformException;
 import org.traccar.Context;
 import org.traccar.api.BaseResource;
 import org.traccar.model.Position;
@@ -26,6 +30,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -37,7 +42,7 @@ public class PositionResource extends BaseResource {
     @GET
     public Collection<Position> get(
             @QueryParam("deviceId") long deviceId, @QueryParam("from") String from, @QueryParam("to") String to)
-            throws SQLException {
+            throws SQLException, MismatchedDimensionException, NoSuchAuthorityCodeException, FactoryException, TransformException {
         if (deviceId == 0) {
             return Context.getDeviceManager().getInitialState(getUserId());
         } else {
