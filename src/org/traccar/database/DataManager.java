@@ -27,20 +27,7 @@ import java.util.Date;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import liquibase.Contexts;
-import liquibase.Liquibase;
-import liquibase.database.Database;
-import liquibase.database.DatabaseFactory;
-import liquibase.exception.LiquibaseException;
-import liquibase.resource.FileSystemResourceAccessor;
-import liquibase.resource.ResourceAccessor;
-
-import org.opengis.geometry.MismatchedDimensionException;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.NoSuchAuthorityCodeException;
-import org.opengis.referencing.operation.TransformException;
 import org.traccar.Config;
-import org.traccar.database.QueryBuilder;
 import org.traccar.helper.GeomReferenceSystemConverterUtil;
 import org.traccar.helper.Log;
 import org.traccar.model.AttributeAlias;
@@ -61,6 +48,14 @@ import org.traccar.model.User;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+
+import liquibase.Contexts;
+import liquibase.Liquibase;
+import liquibase.database.Database;
+import liquibase.database.DatabaseFactory;
+import liquibase.exception.LiquibaseException;
+import liquibase.resource.FileSystemResourceAccessor;
+import liquibase.resource.ResourceAccessor;
 
 public class DataManager {
 
